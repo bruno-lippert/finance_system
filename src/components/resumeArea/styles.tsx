@@ -6,6 +6,7 @@ export const Container = styled.div`
     border-radius: 10px;
     display: flex;
     gap: 10px;
+    min-height: 80px;
 `;
 
 export const MonthArea = styled.div`
@@ -29,6 +30,7 @@ export const MonthString = styled.div`
 export const ResumeArea = styled.div`
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
 `;
 
