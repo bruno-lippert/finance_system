@@ -35,6 +35,5 @@ export const addExpenses = (item: Item[]): string => {
 export const balance = (addRevenue: string, addExpenses: string): string => {
     const revenue = addRevenue.replace(',', '.')
     const expenses = addExpenses.replace(',', '.')
-    console.log(revenue, expenses)
     return `R$ ${formatedValue(Number(revenue) - Number(expenses))}`
 }
