@@ -37,8 +37,12 @@ export const ResumeArea = styled.div`
 export const Resume = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
 `
 
-export const Value = styled.div`
-    
+export const Value = styled.div<{ color?: string }>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${props => props.color ?? '#fff'}
 `;

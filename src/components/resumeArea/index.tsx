@@ -27,6 +27,20 @@ export default function ResumeArea({ currentDate, onCurrentMonth, item }: Props)
     onCurrentMonth(`${newDate.getFullYear()}-${newDate.getMonth() + 1}`)
   }
 
+  const color  = (): string => {
+    const valueString: string = balance(addRevenue(item), addExpenses(item))
+    const valueNumber: number = Number(valueString.slice(2).replace(',', '.'))
+
+    if(valueNumber < 0) {
+      return 'red'
+    } else if(valueNumber > 0) {
+      return 'green'
+    } else {
+      return '#fff'
+    }
+
+  }
+
   return (
     <S.Container>
         <S.MonthArea>
@@ -37,7 +51,7 @@ export default function ResumeArea({ currentDate, onCurrentMonth, item }: Props)
         <S.ResumeArea>
           <S.Resume>Receita <S.Value>R$ {addRevenue(item)}</S.Value></S.Resume>
           <S.Resume>Despesas <S.Value>R$ {addExpenses(item)}</S.Value></S.Resume>
-          <S.Resume>Balanço <S.Value>{balance(addRevenue(item), addExpenses(item))}</S.Value></S.Resume>
+          <S.Resume>Balanço <S.Value color={color()}>{balance(addRevenue(item), addExpenses(item))}</S.Value></S.Resume>
         </S.ResumeArea>
     </S.Container>
   )
