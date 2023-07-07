@@ -44,5 +44,5 @@ export const Value = styled.div<{ color?: string }>`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${props => props.color ?? '#fff'}
+    color: ${props => props.color ?? '#000'}
 `;

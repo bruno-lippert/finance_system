@@ -17,7 +17,7 @@ export default function TableItem({ item } : Props) {
           <S.Category color={categorys[item.category].color}>{categorys[item.category].title}</S.Category>
         </S.TableColumn>
         <S.TableColumn>{item.title}</S.TableColumn>
-        <S.TableColumn>{formatedValue(item.value)}</S.TableColumn>
+        <S.TableColumn>R$ {formatedValue(item.value)}</S.TableColumn>
     </S.TableLine>
   )
 }

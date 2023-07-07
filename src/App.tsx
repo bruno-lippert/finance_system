@@ -5,6 +5,8 @@ import {items} from './data/items'
 import { getCurrentMonth, getFilteredListByMonth } from './helpers/dateFilter';
 import { Item } from './types/Item';
 import ResumeArea from './components/resumeArea';
+import InputArea from './components/inputArea/indesx';
+import { categorys } from './data/category';
 
 function App() {
 const [list, setList] = useState(items)
@@ -17,6 +19,13 @@ useEffect(() => {
 
 const handleCurrentMonth = (newMonth: string) => {
   setCurrentMonth(newMonth)
+}
+
+const handleList = (newBond: Item) => {
+  const newList = [...list]
+
+  newList.push(newBond)
+  setList(newList)
 }
 
   return (
@@ -32,6 +41,8 @@ const handleCurrentMonth = (newMonth: string) => {
         onCurrentMonth={handleCurrentMonth}
         item={flilteredList}
         />
+
+        <InputArea onBond={handleList}/>
 
         <TableArea itemList={flilteredList}/>
       </S.Body>

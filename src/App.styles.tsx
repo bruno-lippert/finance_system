@@ -23,7 +23,7 @@ export const Body = styled.body`
     display: flex;
     flex-direction: column;
     max-width: 980px;
-    margin: auto;
+    width: 100%;
     margin: -40px 20px 0 20px;
     background-color: #fff;
     border-radius: 10px;
