@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     background-color: #fff;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 80px;
 `;
 
 export const Header = styled.header`

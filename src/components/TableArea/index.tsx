@@ -1,4 +1,3 @@
-import React from 'react'
 import * as S from './styles'
 import { Item } from '../../types/Item'
 import TableItem from '../TableItem'

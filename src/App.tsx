@@ -6,7 +6,6 @@ import { getCurrentMonth, getFilteredListByMonth } from './helpers/dateFilter';
 import { Item } from './types/Item';
 import ResumeArea from './components/resumeArea';
 import InputArea from './components/inputArea/indesx';
-import { categorys } from './data/category';
 
 function App() {
 const [list, setList] = useState(items)
@@ -25,6 +24,7 @@ const handleList = (newBond: Item) => {
   const newList = [...list]
 
   newList.push(newBond)
+  newList.sort((a, b) => b.date.getTime() - a.date.getTime()) //ordena ostitulosem ordem decresente
   setList(newList)
 }
 

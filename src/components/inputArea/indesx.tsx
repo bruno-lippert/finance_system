@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import * as S from './styles'
 import './css.css'
 import { Item } from '../../types/Item'
-import { categorys } from '../../data/category';
+import { Category } from '../TableItem/styles';
 
 type Props = {
   onBond: (newBond: Item) => void
 }
 
 export default function InputArea({ onBond }: Props) {
-  const [date, setDate] = useState<Date>(new Date(2000, 1, 1));
+  const [date, setDate] = useState<Date>(new Date());
   const [category, setCategory] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [value, setValue] = useState<number>(0);
@@ -58,6 +58,15 @@ export default function InputArea({ onBond }: Props) {
       value: value
     }
     onBond(newItem)
+
+    resetInputs();
+  }
+
+  const resetInputs = () => {
+    setDate(new Date())
+    setCategory('')
+    setTitle('')
+    setValue(0)
   }
 
   return (
@@ -65,7 +74,7 @@ export default function InputArea({ onBond }: Props) {
       <S.DataContainer>
         <div className='inputInfos'>
           Data:
-          <S.InputDate type='date' onChange={handleDateChange}/>
+          <S.InputDate type='date' onChange={handleDateChange} value={date.toISOString().split('T')[0]}/>
         </div>
         <div className='inputInfos'>
           Categoria:
@@ -79,11 +88,11 @@ export default function InputArea({ onBond }: Props) {
         </div>
         <div className='inputInfos'>
           Descrição:
-          <S.InputTitle onChange={handleTitleChange}/>
+          <S.InputTitle onChange={handleTitleChange} value={title}/>
         </div>
         <div className='inputInfos'>
           Valor:
-          <S.InputValue onChange={handleValueChange}/>
+          <S.InputValue onChange={handleValueChange} value={value}/>
         </div>
       </S.DataContainer>
       <S.SendContainer>
