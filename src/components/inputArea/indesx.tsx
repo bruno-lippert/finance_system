@@ -5,10 +5,10 @@ import { Item } from '../../types/Item'
 import { Category } from '../TableItem/styles';
 
 type Props = {
-  onBond: (newBond: Item) => void
+  onTitle: (newTitle: Item) => void
 }
 
-export default function InputArea({ onBond }: Props) {
+export default function InputArea({ onTitle }: Props) {
   const [date, setDate] = useState<Date>(new Date());
   const [category, setCategory] = useState<string>('');
   const [title, setTitle] = useState<string>('');
@@ -57,7 +57,11 @@ export default function InputArea({ onBond }: Props) {
       title: title,
       value: value
     }
-    onBond(newItem)
+    if(category !== '') {
+    onTitle(newItem)
+    } else {
+      alert('Informe uma categoria!')
+    }
 
     resetInputs();
   }

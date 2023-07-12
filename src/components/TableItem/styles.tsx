@@ -8,3 +8,7 @@ export const TableColumn = styled.td`
 `;
 
 export const Category = styled.div``;
+
+export const RemoveIcon = styled.div`
+    cursor: pointer;
+`

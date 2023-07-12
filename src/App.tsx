@@ -20,11 +20,19 @@ const handleCurrentMonth = (newMonth: string) => {
   setCurrentMonth(newMonth)
 }
 
-const handleList = (newBond: Item) => {
+const handleList = (newTitle: Item) => {
   const newList = [...list]
 
-  newList.push(newBond)
+  newList.push(newTitle)
   newList.sort((a, b) => b.date.getTime() - a.date.getTime()) //ordena ostitulosem ordem decresente
+  setList(newList)
+}
+
+const handleRemoveTitle = (position: number) => {
+  const newList = [...list]
+
+  newList.splice(position, 1)
+
   setList(newList)
 }
 
@@ -42,9 +50,9 @@ const handleList = (newBond: Item) => {
         item={flilteredList}
         />
 
-        <InputArea onBond={handleList}/>
+        <InputArea onTitle={handleList}/>
 
-        <TableArea itemList={flilteredList}/>
+        <TableArea itemList={flilteredList} handleRemoveTitle={handleRemoveTitle}/>
       </S.Body>
 
     </S.Container>
