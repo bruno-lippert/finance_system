@@ -48,6 +48,7 @@ export const ResumeArea = styled.div`
         grid-area: resumearea;
         grid-template-areas: 
         'revenue expenses balance';
+        padding-bottom: 10px;
        
        
         .revenue{
