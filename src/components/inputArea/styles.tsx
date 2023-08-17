@@ -13,8 +13,32 @@ export const Container = styled.div`
 
 export const DataContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
+    flex-wrap: wrap;
+
+    @media (max-width: 550px) {
+        display: grid;
+        grid-template-areas: 
+            'date'
+            'category'
+            'title'
+            'value';
+        gap: 10px;
+
+        .inputDate {
+            grid-area: date;
+        }
+        .inputCategory {
+            grid-area: category;
+        }
+        .inputTitle {
+            grid-area: title;
+        }
+        .inputValue {
+            grid-area: value;
+        }
+    }
 `;
 
 const globalInputStyles
@@ -25,24 +49,19 @@ const globalInputStyles
 `;
 
 export const InputDate = styled.input`
-    ${globalInputStyles
-    }
+    ${globalInputStyles}
 `;
 
 export const InputCategory = styled.select`
-    ${globalInputStyles
-    }
+    ${globalInputStyles}
 `;
 
 export const InputTitle = styled.input`
-    ${globalInputStyles
-    }
-    
+    ${globalInputStyles}
 `;
 
 export const InputValue = styled.input`
-    ${globalInputStyles
-    }
+    ${globalInputStyles}
 `;
 
 export const SendContainer = styled.div`

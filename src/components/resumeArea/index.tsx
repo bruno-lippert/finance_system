@@ -49,9 +49,9 @@ export default function ResumeArea({ currentDate, onCurrentMonth, item }: Props)
             <S.MonthArrow onClick={handleNextMonth}><AiOutlineArrowRight /></S.MonthArrow>
         </S.MonthArea>
         <S.ResumeArea>
-          <S.Resume>Receita <S.Value>R$ {addRevenue(item)}</S.Value></S.Resume>
-          <S.Resume>Despesas <S.Value>R$ {addExpenses(item)}</S.Value></S.Resume>
-          <S.Resume>Balanço <S.Value color={color()}>{balance(addRevenue(item), addExpenses(item))}</S.Value></S.Resume>
+          <S.Resume className='revenue'>Receita <S.Value>R$ {addRevenue(item)}</S.Value></S.Resume>
+          <S.Resume className='expenses' >Despesas <S.Value>R$ {addExpenses(item)}</S.Value></S.Resume>
+          <S.Resume className='balance' >Balanço <S.Value color={color()}>{balance(addRevenue(item), addExpenses(item))}</S.Value></S.Resume>
         </S.ResumeArea>
     </S.Container>
   )

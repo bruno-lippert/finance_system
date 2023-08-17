@@ -5,6 +5,10 @@ export const Table = styled.table`
     padding: 5px;
     border-radius: 10px;
     text-align: left;
+    overflow-x: auto;
+    @media (max-width: 450px) {
+        
+    }
 `;
 
 export const TableHeadColumn = styled.th<{ width?: number }>`

@@ -81,11 +81,11 @@ export default function InputArea({ onTitle }: Props) {
   return (
     <S.Container>
       <S.DataContainer>
-        <div className='inputInfos'>
+        <div className='inputInfos inputDate'>
           Data:
           <S.InputDate type='date' onChange={handleDateChange} value={date.toISOString().split('T')[0]}/>
         </div>
-        <div className='inputInfos'>
+        <div className='inputInfos inputCategory'>
           Categoria:
           <S.InputCategory onChange={handleCategoryChange}>
             <option>[Selecione]</option>
@@ -95,11 +95,11 @@ export default function InputArea({ onTitle }: Props) {
             <option>Salário</option>
           </S.InputCategory>
         </div>
-        <div className='inputInfos'>
+        <div className='inputInfos inputTitle'>
           Descrição:
           <S.InputTitle onChange={handleTitleChange} value={title}/>
         </div>
-        <div className='inputInfos'>
+        <div className='inputInfos inputValue'>
           Valor:
           <S.InputValue onChange={handleValueChange} value={value}/>
         </div>

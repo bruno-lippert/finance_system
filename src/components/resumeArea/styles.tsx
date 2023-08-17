@@ -7,6 +7,15 @@ export const Container = styled.div`
     display: flex;
     gap: 10px;
     min-height: 80px;
+    
+    @media (max-width: 1000px ) {
+        display: grid;
+        grid-template-areas: 
+            "date "
+            "resumearea";
+        justify-items: center;
+        align-items: center;
+    }
 `;
 
 export const MonthArea = styled.div`
@@ -15,6 +24,7 @@ export const MonthArea = styled.div`
     align-items: center;
     padding: 10px ;
     text-align: center;
+    grid-area: date;
 `;
 
 export const MonthArrow = styled.div`
@@ -32,6 +42,25 @@ export const ResumeArea = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 100%;
+
+    @media (max-width: 1000px ) {
+        display: grid;
+        grid-area: resumearea;
+        grid-template-areas: 
+        'revenue expenses balance';
+       
+       
+        .revenue{
+            grid-area: revenue;
+        }
+        .expenses {
+            grid-area: expenses;
+        }
+        .balance {
+           grid-area: balance;
+        } 
+    }
+    
 `;
 
 export const Resume = styled.div`
