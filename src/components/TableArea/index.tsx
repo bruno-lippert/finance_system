@@ -12,11 +12,11 @@ export default function TableArea({ itemList, handleRemoveTitle }: Props) {
     <S.Table>
         <thead>
             <tr>
-                <S.TableHeadColumn width={100}>Data</S.TableHeadColumn>
-                <S.TableHeadColumn width={130}>Categoria</S.TableHeadColumn>
-                <S.TableHeadColumn>Título</S.TableHeadColumn>
-                <S.TableHeadColumn width={150}>Valor</S.TableHeadColumn>
-                <S.TableHeadColumn width={35}/>
+                <S.TableHeadColumn width={20}>Data</S.TableHeadColumn>
+                <S.TableHeadColumn width={20}>Categoria</S.TableHeadColumn>
+                <S.TableHeadColumn width={30}>Título</S.TableHeadColumn>
+                <S.TableHeadColumn width={20}>Valor</S.TableHeadColumn>
+                <S.TableHeadColumn width={10}/>
             </tr>
         </thead>
         <tbody>

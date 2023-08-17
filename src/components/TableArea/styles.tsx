@@ -5,13 +5,15 @@ export const Table = styled.table`
     padding: 5px;
     border-radius: 10px;
     text-align: left;
-    overflow-x: auto;
     @media (max-width: 450px) {
-        
+        font-size: 0.8rem;
+    }
+    @media (max-width: 360px) {
+        font-size: 0.5rem;
     }
 `;
 
 export const TableHeadColumn = styled.th<{ width?: number }>`
-    width: ${ props => props.width ? `${props.width}px` : `auto`} ;
+    width: ${ props => props.width ? `${props.width}%` : `auto`} ;
     padding: 10px;
 `;

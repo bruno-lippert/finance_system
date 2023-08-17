@@ -5,6 +5,7 @@ export const TableLine = styled.tr`
 
 export const TableColumn = styled.td`
     padding: 10px;
+    white-space: nowrap;
 `;
 
 export const Category = styled.div``;
