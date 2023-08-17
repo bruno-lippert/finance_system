@@ -16,7 +16,6 @@ export default function TableArea({ itemList, handleRemoveTitle }: Props) {
                 <S.TableHeadColumn width={20}>Categoria</S.TableHeadColumn>
                 <S.TableHeadColumn width={30}>Título</S.TableHeadColumn>
                 <S.TableHeadColumn width={20}>Valor</S.TableHeadColumn>
-                <S.TableHeadColumn width={10}/>
             </tr>
         </thead>
         <tbody>
