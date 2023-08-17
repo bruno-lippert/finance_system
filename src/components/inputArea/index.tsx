@@ -57,13 +57,18 @@ export default function InputArea({ onTitle }: Props) {
       title: title,
       value: value
     }
-    if(category !== '') {
-    onTitle(newItem)
-    } else {
+    
+    if(category === '') {
       alert('Informe uma categoria!')
+    } else if(title === ''){
+      alert('Informe uma descrição!')
+    } else if(value === 0 || null) {
+      alert('Informe um valor!')
+    } else {
+      onTitle(newItem)
+      resetInputs();
     }
 
-    resetInputs();
   }
 
   const resetInputs = () => {

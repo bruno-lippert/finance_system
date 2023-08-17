@@ -5,7 +5,7 @@ import {items} from './data/items'
 import { getCurrentMonth, getFilteredListByMonth } from './helpers/dateFilter';
 import { Item } from './types/Item';
 import ResumeArea from './components/resumeArea';
-import InputArea from './components/inputArea/indesx';
+import InputArea from './components/inputArea';
 
 function App() {
 const [list, setList] = useState(items)
