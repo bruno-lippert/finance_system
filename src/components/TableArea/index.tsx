@@ -1,13 +1,15 @@
+import { useEffect, useState } from 'react'
 import * as S from './styles'
 import { Item } from '../../types/Item'
 import TableItem from '../TableItem'
 
 type Props = {
   itemList: Item[],
-  handleRemoveTitle: (key: number) => void
+  handleRemoveBond: (id: string, item: Item) => void
 }
 
-export default function TableArea({ itemList, handleRemoveTitle }: Props) {
+export default function TableArea({ itemList, handleRemoveBond }: Props) {
+  
   return (
     <S.Table>
         <thead>
@@ -21,7 +23,7 @@ export default function TableArea({ itemList, handleRemoveTitle }: Props) {
         </thead>
         <tbody>
           {itemList.map((item, index) => (
-              <TableItem key={index} position={index} item={item} handleRemoveTitle={handleRemoveTitle}/>
+              <TableItem key={index} position={index} item={item} handleRemoveBond={handleRemoveBond}/>
           ))}
         </tbody>
     </S.Table>

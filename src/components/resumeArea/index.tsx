@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './styles'
-import { formatedMonth } from '../../helpers/dateFilter'
+import { formattedMonth } from '../../helpers/dateFilter'
 import { addExpenses, addRevenue, balance } from '../../helpers/valueHelper'
 import { AiOutlineArrowLeft, AiOutlineArrowRight  } from 'react-icons/ai';
 import { Item } from '../../types/Item';
@@ -45,7 +45,7 @@ export default function ResumeArea({ currentDate, onCurrentMonth, item }: Props)
     <S.Container>
         <S.MonthArea>
             <S.MonthArrow onClick={handleLastMonth}><AiOutlineArrowLeft /></S.MonthArrow>
-            <S.MonthString>{formatedMonth(currentDate)}</S.MonthString>
+            <S.MonthString>{formattedMonth(currentDate)}</S.MonthString>
             <S.MonthArrow onClick={handleNextMonth}><AiOutlineArrowRight /></S.MonthArrow>
         </S.MonthArea>
         <S.ResumeArea>

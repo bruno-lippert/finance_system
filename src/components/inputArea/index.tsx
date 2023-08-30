@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as S from './styles'
 import './css.css'
 import { Item } from '../../types/Item'
-import { Category } from '../TableItem/styles';
+import { createBond } from '../../services/financeService';
 
 type Props = {
   onTitle: (newTitle: Item) => void
@@ -54,7 +54,7 @@ export default function InputArea({ onTitle }: Props) {
     const newItem: Item = {
       date: date,
       category: category,
-      title: title,
+      description: title,
       value: value
     }
     
@@ -67,13 +67,13 @@ export default function InputArea({ onTitle }: Props) {
     } else {
       onTitle(newItem)
       resetInputs();
+      createBond(newItem)
     }
 
   }
 
   const resetInputs = () => {
     setDate(new Date())
-    setCategory('')
     setTitle('')
     setValue(0)
   }

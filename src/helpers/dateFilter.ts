@@ -19,7 +19,7 @@ export const getFilteredListByMonth = (listItem: Item[], date: string): Item[] =
 
 }
 
-export const formatedDate = (date: Date): string => {
+export const formattedDate = (date: Date): string => {
     let year = date.getFullYear()
     let month = date.getMonth()
     let day = date.getDate() +1
@@ -29,7 +29,7 @@ export const formatedDate = (date: Date): string => {
 
 const addZeroToDate = ((n: number) => n < 10 ? `0${n}` : `${n}`);
 
-export const formatedMonth = (date: string): string => {
+export const formattedMonth = (date: string): string => {
     const [year, month]  = date.split('-')
 
     const months: string[] = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
