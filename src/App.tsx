@@ -16,6 +16,9 @@ function App() {
     setFilteredList(getFilteredListByMonth(list, currentMonth))
   }, [list, currentMonth])
 
+  useEffect(() => {
+    fetchBonds()
+  }, [])
 
   async function fetchBonds() {
     const data = await getBonds()
@@ -30,21 +33,12 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    fetchBonds()
-  }, [])
-
-
   const handleCurrentMonth = (newMonth: string) => {
     setCurrentMonth(newMonth)
   }
 
-  const handleList = (newTitle: Item) => {
-    const newList = [...list]
-
-    newList.push(newTitle)
-    newList.sort((a, b) => b.date.getTime() - a.date.getTime()) //ordena ostitulosem ordem decresente
-    setList(newList)
+  const handleList = () => {
+    fetchBonds()
   }
 
   const handleRemoveBond = async (id: string, item: Item) => {
@@ -66,7 +60,7 @@ function App() {
           item={flilteredList}
         />
 
-        <InputArea onTitle={handleList} />
+        <InputArea onBond={handleList} />
 
         <TableArea itemList={flilteredList} handleRemoveBond={handleRemoveBond} />
       </S.Body>

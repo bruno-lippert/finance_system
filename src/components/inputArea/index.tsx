@@ -5,10 +5,10 @@ import { Item } from '../../types/Item'
 import { createBond } from '../../services/financeService';
 
 type Props = {
-  onTitle: (newTitle: Item) => void
+  onBond: () => void
 }
 
-export default function InputArea({ onTitle }: Props) {
+export default function InputArea({ onBond }: Props) {
   const [date, setDate] = useState<Date>(new Date());
   const [category, setCategory] = useState<string>('');
   const [title, setTitle] = useState<string>('');
@@ -65,7 +65,7 @@ export default function InputArea({ onTitle }: Props) {
     } else if(value === 0 || null) {
       alert('Informe um valor!')
     } else {
-      onTitle(newItem)
+      onBond()
       resetInputs();
       createBond(newItem)
     }
