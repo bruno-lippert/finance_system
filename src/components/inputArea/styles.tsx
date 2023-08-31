@@ -56,7 +56,7 @@ export const InputCategory = styled.select`
     ${globalInputStyles}
 `;
 
-export const InputTitle = styled.input`
+export const InputDescription = styled.input`
     ${globalInputStyles}
 `;
 

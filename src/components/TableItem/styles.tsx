@@ -10,6 +10,12 @@ export const TableColumn = styled.td`
 
 export const Category = styled.div``;
 
-export const RemoveIcon = styled.div`
+export const ModifyIcons = styled.div`
     cursor: pointer;
 `
+
+export const IconsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+`;

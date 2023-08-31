@@ -11,7 +11,7 @@ type Props = {
 export default function InputArea({ onBond }: Props) {
   const [date, setDate] = useState<Date>(new Date());
   const [category, setCategory] = useState<string>('');
-  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
   const [value, setValue] = useState<number>(0);
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,8 +42,8 @@ export default function InputArea({ onBond }: Props) {
     }
   };
 
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
+  const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(event.target.value);
   };
 
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,13 +54,13 @@ export default function InputArea({ onBond }: Props) {
     const newItem: Item = {
       date: date,
       category: category,
-      description: title,
+      description: description,
       value: value
     }
     
     if(category === '') {
       alert('Informe uma categoria!')
-    } else if(title === ''){
+    } else if(description === ''){
       alert('Informe uma descrição!')
     } else if(value === 0 || null) {
       alert('Informe um valor!')
@@ -74,7 +74,7 @@ export default function InputArea({ onBond }: Props) {
 
   const resetInputs = () => {
     setDate(new Date())
-    setTitle('')
+    setDescription('')
     setValue(0)
   }
 
@@ -95,9 +95,9 @@ export default function InputArea({ onBond }: Props) {
             <option>Salário</option>
           </S.InputCategory>
         </div>
-        <div className='inputInfos inputTitle'>
+        <div className='inputInfos inputdescription'>
           Descrição:
-          <S.InputTitle onChange={handleTitleChange} value={title}/>
+          <S.InputDescription onChange={handleDescriptionChange} value={description}/>
         </div>
         <div className='inputInfos inputValue'>
           Valor:
