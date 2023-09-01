@@ -66,7 +66,7 @@ function App() {
         <TableArea itemList={flilteredList} handleRemoveBond={handleRemoveBond} />
       </S.Body>
 
-      <EditBondModal/>
+      {/* <EditBondModal/> */}
     </S.Container>
   );
 }
