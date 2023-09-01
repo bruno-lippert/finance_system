@@ -21,8 +21,8 @@ export default function InputArea({ onBond }: Props) {
   };
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    
-    switch(event.target.value) {
+
+    switch (event.target.value) {
       case 'Necessidades':
         setCategory('needs')
         break;
@@ -49,7 +49,7 @@ export default function InputArea({ onBond }: Props) {
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(Number(event.target.value));
   };
-  
+
   const register = () => {
     const newItem: Item = {
       date: date,
@@ -57,12 +57,12 @@ export default function InputArea({ onBond }: Props) {
       description: description,
       value: value
     }
-    
-    if(category === '') {
+
+    if (category === '') {
       alert('Informe uma categoria!')
-    } else if(description === ''){
+    } else if (description === '') {
       alert('Informe uma descrição!')
-    } else if(value === 0 || null) {
+    } else if (value === 0 || null) {
       alert('Informe um valor!')
     } else {
       onBond()
@@ -83,25 +83,25 @@ export default function InputArea({ onBond }: Props) {
       <S.DataContainer>
         <div className='inputInfos inputDate'>
           Data:
-          <S.InputDate type='date' onChange={handleDateChange} value={date.toISOString().split('T')[0]}/>
+          <S.InputDate type='date' onChange={handleDateChange} value={date.toISOString().split('T')[0]} />
         </div>
         <div className='inputInfos inputCategory'>
           Categoria:
           <S.InputCategory onChange={handleCategoryChange}>
             <option>[Selecione]</option>
-            <option>Necessidades</option>
-            <option>Alimentação</option>
-            <option>Entretenimento</option>
-            <option>Salário</option>
+            <option value='Necessidades'>Necessidades</option>
+            <option value='Alimentação'>Alimentação</option>
+            <option value='Entretenimento'>Entretenimento</option>
+            <option value='Salário'>Salário</option>
           </S.InputCategory>
         </div>
         <div className='inputInfos inputdescription'>
           Descrição:
-          <S.InputDescription onChange={handleDescriptionChange} value={description}/>
+          <S.InputDescription onChange={handleDescriptionChange} value={description} />
         </div>
         <div className='inputInfos inputValue'>
           Valor:
-          <S.InputValue onChange={handleValueChange} value={value}/>
+          <S.InputValue onChange={handleValueChange} value={value} />
         </div>
       </S.DataContainer>
       <S.SendContainer>

@@ -28,10 +28,10 @@ export default function EditBondModal({ item, setEditModal }: Props) {
             Categoria:
             <S.InputCategory>
               <option>[Selecione]</option>
-              <option>Necessidades</option>
-              <option>Alimentação</option>
-              <option>Entretenimento</option>
-              <option>Salário</option>
+              <option value='Necessidades'>Necessidades</option>
+              <option value='Alimentação'>Alimentação</option>
+              <option value='Entretenimento'>Entretenimento</option>
+              <option value='Salário'>Salário</option>
             </S.InputCategory>
           </div>
           <div className='inputInfos inputdescription'>

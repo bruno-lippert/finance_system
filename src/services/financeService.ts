@@ -41,6 +41,18 @@ export async function deleteBonds(id: string) {
     }
 }
 
-export async function updateBond() {
+export async function updateBond(id: string, item: Item) {
+    const { data, error } = await supabase
+        .from('financedata')
+        .update(item)
+        .eq('id', id)
+        .select()
+
+    if(error) {
+        console.error('Erro ao editar:', error.message);
+        return;
+    }
+
+    return data
 
 }
