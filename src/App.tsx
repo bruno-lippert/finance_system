@@ -6,6 +6,7 @@ import { Item } from './types/Item';
 import ResumeArea from './components/resumeArea';
 import InputArea from './components/inputArea';
 import { deleteBonds, getBonds } from './services/financeService';
+import EditBondModal from './components/Modals/EditBondModal';
 
 function App() {
   const [list, setList] = useState<Item[]>([])
@@ -65,6 +66,7 @@ function App() {
         <TableArea itemList={flilteredList} handleRemoveBond={handleRemoveBond} />
       </S.Body>
 
+      <EditBondModal/>
     </S.Container>
   );
 }
