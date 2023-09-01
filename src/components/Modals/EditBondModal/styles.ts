@@ -23,8 +23,15 @@ export const ContentContainer = styled.div`
     flex-direction: column;
     padding: 20px 10px;
     width: 80%;
-
     background-color: #fff;
+    position: relative;
+
+    .closeModal {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        cursor: pointer;
+    }
 `;
 
 export const DataContainer = styled.div`
@@ -58,7 +65,7 @@ export const DataContainer = styled.div`
 `;
 
 const globalInputStyles
- = css`
+    = css`
     background-color: transparent;
     border: 1px solid black;
     border-radius: 3px;

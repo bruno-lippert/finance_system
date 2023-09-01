@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
 import * as S from './styles'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
+import { Item } from '../../../types/Item'
 
-export default function EditBondModal() {
-  const [date, setDate] = useState<Date>(new Date());
+type Props = {
+  item: Item,
+  setEditModal: (v: boolean) => void
+}
+
+export default function EditBondModal({ item, setEditModal }: Props) {
+  const [date, setDate] = useState<Date>(new Date(item.date));
   const [category, setCategory] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [value, setValue] = useState<number>(0);
+  const [description, setDescription] = useState<string>(item.description);
+  const [value, setValue] = useState<number>(item.value);
 
   return (
 
     <S.ModalContainer>
       <S.ContentContainer>
-        <AiOutlineCloseCircle/>
+         <AiOutlineCloseCircle className='closeModal' onClick={() => setEditModal(false)}/>
         <S.DataContainer>
           <div className='inputInfos inputDate'>
             Data:

@@ -4,10 +4,12 @@ import TableItem from '../TableItem'
 
 type Props = {
   itemList: Item[],
-  handleRemoveBond: (id: string, item: Item) => void
+  handleRemoveBond: (id: string, item: Item) => void,
+  setEditModal: (v: Boolean) => void,
+  setItem: (item: Item) => void
 }
 
-export default function TableArea({ itemList, handleRemoveBond }: Props) {
+export default function TableArea({ itemList, handleRemoveBond, setEditModal, setItem }: Props) {
   
   return (
     <S.Table>
@@ -22,7 +24,12 @@ export default function TableArea({ itemList, handleRemoveBond }: Props) {
         </thead>
         <tbody>
           {itemList.map((item, index) => (
-              <TableItem key={index} position={index} item={item} handleRemoveBond={handleRemoveBond}/>
+              <TableItem
+              key={index}
+              position={index}
+              item={item}
+              handleRemoveBond={handleRemoveBond}
+              setEditModal={setEditModal} setItem={setItem}/>
           ))}
         </tbody>
     </S.Table>

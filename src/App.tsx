@@ -13,6 +13,9 @@ function App() {
   const [flilteredList, setFilteredList] = useState<Item[]>([])
   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth())
 
+  const [editModal, setEditModal] = useState<Boolean>(false)
+  const [item, setItem] = useState<Item>({date: new Date(), category: '', description: '', value: 0})
+
   useEffect(() => {
     setFilteredList(getFilteredListByMonth(list, currentMonth))
   }, [list, currentMonth])
@@ -63,10 +66,10 @@ function App() {
 
         <InputArea onBond={handleList} />
 
-        <TableArea itemList={flilteredList} handleRemoveBond={handleRemoveBond} />
+        <TableArea itemList={flilteredList} handleRemoveBond={handleRemoveBond} setEditModal={setEditModal} setItem={setItem}/>
       </S.Body>
 
-      <EditBondModal/>
+      {editModal && <EditBondModal setEditModal={setEditModal} item={item}/>}
     </S.Container>
   );
 }

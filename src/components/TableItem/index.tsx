@@ -10,10 +10,17 @@ import { BiEdit } from 'react-icons/bi'
 type Props = {
   item: Item,
   position: number,
-  handleRemoveBond: (id: string, item: Item) => void
+  handleRemoveBond: (id: string, item: Item) => void,
+  setEditModal: (v: Boolean) => void,
+  setItem: (item: Item) => void
 }
 
-export default function TableItem({ item, position, handleRemoveBond }: Props) {
+export default function TableItem({ item, position, handleRemoveBond, setEditModal, setItem }: Props) {
+
+  const handleClickEdit = () => {
+    setEditModal(true);
+    setItem(item)
+  }
 
   return (
     <S.TableLine>
@@ -26,7 +33,7 @@ export default function TableItem({ item, position, handleRemoveBond }: Props) {
       <S.TableColumn>
         <S.IconsContainer>
           <S.ModifyIcons>
-            <BiEdit />
+            <BiEdit onClick={handleClickEdit}/>
           </S.ModifyIcons>
           <S.ModifyIcons>
             <BsTrash3 onClick={() => item.id && handleRemoveBond(item.id, item)} />
