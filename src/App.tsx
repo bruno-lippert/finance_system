@@ -46,13 +46,13 @@ function App() {
     setCurrentMonth(newMonth)
   }
 
-  const handleList = () => {
-    fetchBonds()
+  const handleList = async () => {
+    await fetchBonds()
   }
 
   const handleRemoveBond = async (id: string, item: Item) => {
     await deleteBonds(id)
-    fetchBonds()
+    await fetchBonds()
   }
 
   return (
@@ -74,7 +74,7 @@ function App() {
         <TableArea itemList={flilteredList} handleRemoveBond={handleRemoveBond} setEditModal={setEditModal} setItem={setItem}/>
       </S.Body>
 
-      {editModal && <EditBondModal setEditModal={setEditModal} item={item}/>}
+      {editModal && <EditBondModal setEditModal={setEditModal} item={item} onBond={handleList}/>}
     </S.Container>
   );
 }
