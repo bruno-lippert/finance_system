@@ -28,14 +28,19 @@ function App() {
     const data = await getBonds()
 
     if (data) {
-      const newDataWithDateObjects = data.map(item => ({
-        ...item,
-        date: new Date(item.date), // Convert date to Date object
-      }));
+        const newDataWithDateObjects = data.map(item => {
+            // Converte a data para um objeto Date no fuso horário local
+            const localDate = new Date(item.date + 'T00:00:00');
+            return {
+                ...item,
+                date: localDate,
+            };
+        });
 
-      setList(newDataWithDateObjects);
+        setList(newDataWithDateObjects);
     }
-  }
+}
+
 
   const handleCurrentMonth = (newMonth: string) => {
     setCurrentMonth(newMonth)
