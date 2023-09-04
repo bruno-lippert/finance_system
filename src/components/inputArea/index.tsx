@@ -65,9 +65,9 @@ export default function InputArea({ onBond }: Props) {
     } else if(value === 0 || null) {
       alert('Informe um valor!')
     } else {
-      onBond()
       resetInputs();
       createBond(newItem)
+      onBond()
     }
 
   }

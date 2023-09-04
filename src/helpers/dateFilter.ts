@@ -22,7 +22,7 @@ export const getFilteredListByMonth = (listItem: Item[], date: string): Item[] =
 export const formattedDate = (date: Date): string => {
     let year = date.getFullYear()
     let month = date.getMonth()
-    let day = date.getDate() +1
+    let day = date.getDate()
 
     return `${addZeroToDate(day)}/${addZeroToDate(month + 1)}/${year}`
 }
