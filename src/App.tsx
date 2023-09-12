@@ -7,76 +7,80 @@ import ResumeArea from './components/resumeArea';
 import InputArea from './components/inputArea';
 import { deleteBonds, getBonds } from './services/financeService';
 import EditBondModal from './components/Modals/EditBondModal';
+import Login from './components/Login';
+import { RouterProvider } from 'react-router-dom';
+import router from './routes';
 
 function App() {
-  const [list, setList] = useState<Item[]>([])
-  const [flilteredList, setFilteredList] = useState<Item[]>([])
-  const [currentMonth, setCurrentMonth] = useState(getCurrentMonth())
+  return <RouterProvider router={router} />
+//   const [list, setList] = useState<Item[]>([])
+//   const [flilteredList, setFilteredList] = useState<Item[]>([])
+//   const [currentMonth, setCurrentMonth] = useState(getCurrentMonth())
 
-  const [editModal, setEditModal] = useState<Boolean>(false)
-  const [item, setItem] = useState<Item>({date: new Date(), category: '', description: '', value: 0})
+//   const [editModal, setEditModal] = useState<Boolean>(false)
+//   const [item, setItem] = useState<Item>({date: new Date(), category: '', description: '', value: 0})
 
-  useEffect(() => {
-    setFilteredList(getFilteredListByMonth(list, currentMonth))
-  }, [list, currentMonth])
+//   useEffect(() => {
+//     setFilteredList(getFilteredListByMonth(list, currentMonth))
+//   }, [list, currentMonth])
 
-  useEffect(() => {
-    fetchBonds()
-  }, [])
+//   useEffect(() => {
+//     fetchBonds()
+//   }, [])
 
-  async function fetchBonds() {
-    const data = await getBonds()
+//   async function fetchBonds() {
+//     const data = await getBonds()
 
-    if (data) {
-        const newDataWithDateObjects = data.map(item => {
-            // Converte a data para um objeto Date no fuso horário local
-            const localDate = new Date(item.date + 'T00:00:00');
-            return {
-                ...item,
-                date: localDate,
-            };
-        });
+//     if (data) {
+//         const newDataWithDateObjects = data.map(item => {
+//             // Converte a data para um objeto Date no fuso horário local
+//             const localDate = new Date(item.date + 'T00:00:00');
+//             return {
+//                 ...item,
+//                 date: localDate,
+//             };
+//         });
 
-        setList(newDataWithDateObjects);
-    }
-}
+//         setList(newDataWithDateObjects);
+//     }
+// }
 
 
-  const handleCurrentMonth = (newMonth: string) => {
-    setCurrentMonth(newMonth)
-  }
+//   const handleCurrentMonth = (newMonth: string) => {
+//     setCurrentMonth(newMonth)
+//   }
 
-  const handleList = () => {
-    fetchBonds()
-  }
+//   const handleList = () => {
+//     fetchBonds()
+//   }
 
-  const handleRemoveBond = async (id: string, item: Item) => {
-    await deleteBonds(id)
-    fetchBonds()
-  }
+//   const handleRemoveBond = async (id: string, item: Item) => {
+//     await deleteBonds(id)
+//     fetchBonds()
+//   }
 
-  return (
-    <S.Container >
-      <S.Header>
-        <S.Title>
-          Sistema de Finanças
-        </S.Title>
-      </S.Header>
+//   return (
+//     <S.Container >
+//       <S.Header>
+//         <S.Title>
+//           Sistema de Finanças
+//         </S.Title>
+//       </S.Header>
 
-      <S.Body>
-        <ResumeArea currentDate={currentMonth}
-          onCurrentMonth={handleCurrentMonth}
-          item={flilteredList}
-        />
+//       <S.Body>
+//         <ResumeArea currentDate={currentMonth}
+//           onCurrentMonth={handleCurrentMonth}
+//           item={flilteredList}
+//         />
 
-        <InputArea onBond={handleList} />
+//         <InputArea onBond={handleList} />
 
-        <TableArea itemList={flilteredList} handleRemoveBond={handleRemoveBond} setEditModal={setEditModal} setItem={setItem}/>
-      </S.Body>
+//         <TableArea itemList={flilteredList} handleRemoveBond={handleRemoveBond} setEditModal={setEditModal} setItem={setItem}/>
+//       </S.Body>
 
-      {editModal && <EditBondModal setEditModal={setEditModal} item={item}/>}
-    </S.Container>
-  );
+//       {editModal && <EditBondModal setEditModal={setEditModal} item={item}/>}
+//     </S.Container>
+//  );
 }
 
 export default App;
