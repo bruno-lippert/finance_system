@@ -74,11 +74,15 @@ export default function Login() {
   return (
     <S.Container>
       <S.Login>
-        <S.BackButton>
-          <BsArrowLeftCircle onClick={() => setUserHasLogin(true)}/>
-        </S.BackButton>
 
-        {userHasLogin ? <h1>Login</h1> : <h1>Cadastro</h1>}
+        {userHasLogin ?
+          <h1>Login</h1> :
+          <>
+        <S.BackButton>
+          <BsArrowLeftCircle onClick={() => setUserHasLogin(true)} />
+        </S.BackButton>
+            <h1>Cadastro</h1>
+          </>}
 
         <div>
           <label htmlFor="email"><h3>Email:</h3></label>
