@@ -22,6 +22,8 @@ export const Login = styled.main`
   flex-direction: column;
   gap: 10px;
 
+  position: relative;
+
   h3 {
     margin: 0;
     display: inline-block;
@@ -93,4 +95,16 @@ export const NoRecord = styled.div`
   &:hover {
     color: #fff;
   }
+`;
+
+export const BackButton = styled.div`
+  position: absolute;
+  top: 15px;
+  left: 15px;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 25px;
 `;

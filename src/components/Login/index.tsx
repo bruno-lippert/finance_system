@@ -3,6 +3,7 @@ import * as S from './styles';
 import { useNavigate } from 'react-router-dom';
 import { userLogin, userSingUp } from '../../services/userManagement';
 import { UserLogin } from '../../types/Login';
+import { BsArrowLeftCircle } from 'react-icons/bs';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -45,13 +46,16 @@ export default function Login() {
       email: email,
       password: password
     }
-    
-    if (Number(newUser.password.length) < 8) {
+
+    if (!newUser.email.includes('@')) {
       alert(`Senha deve conter no minimo 8 caracteres!`)
-    } else if (newUser.email !== `` && newUser.name !== ``) {
-      userSingUp(newUser)
+    } else if (newUser.email === `` && newUser.name === ``) {
+      alert(`Dados inválidos!`)
+    } else if (Number(newUser.password.length) < 8) {
+      alert(`Email Inválido!`)
     } else {
-      alert(`Dados invalidos!`)
+      userSingUp(newUser)
+      setUserHasLogin(true)
     }
   }
 
@@ -70,6 +74,9 @@ export default function Login() {
   return (
     <S.Container>
       <S.Login>
+        <S.BackButton>
+          <BsArrowLeftCircle onClick={() => setUserHasLogin(true)}/>
+        </S.BackButton>
 
         {userHasLogin ? <h1>Login</h1> : <h1>Cadastro</h1>}
 
