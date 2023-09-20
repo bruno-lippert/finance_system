@@ -20,32 +20,31 @@ export default function Login() {
     const data = await userLogin()
 
     if (data) {
-      const newUser = data.map(user => {
-        return {
-          ...user
+      data.map(user => {
+        if (user.email === email && user.password === password) {
+          navigate('/home')
+          setUser(user)
+        } else {
+
         }
       })
-      setUser(newUser)
+      // setUser(user)
     }
 
-    user.map(user => {
-      if (user.email === email && user.password === password) {
-        navigate('/home')
-      } else {
-        setError(`Usuário não encontrado!`)
-        toastError(`Usuário não encontrado!`)
-      }
-    })
-
+    if (user.length === 0) {
+      setError(`Usuário não encontrado!`)
+      toastError(`Usuário não encontrado!`)
+      console.log('Erro')
+    }
   }
 
   const handleUserLogin = async () => {
-    try{
+    try {
       fetchLogin()
     } catch {
       toastError(`Erro ao logar!`)
     }
-    
+
   }
 
   const handleUserSingUp = async () => {
