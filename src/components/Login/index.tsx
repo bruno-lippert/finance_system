@@ -15,6 +15,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [user, setUser] = useState<UserLogin[]>([]);
   const [userHasLogin, setUserHasLogin] = useState<boolean>(true)
+  const [wrongPassword, setWrongPassword] = useState<string[]>([])
 
   const fetchLogin = async () => {
     const data = await userLogin()
@@ -24,17 +25,16 @@ export default function Login() {
         if (user.email === email && user.password === password) {
           navigate('/home')
           setUser(user)
-        } else {
-
+        } else if (user.email === email && user.password !== password) {
+          wrongPassword.push(password)
         }
       })
-      // setUser(user)
     }
-
-    if (user.length === 0) {
+    if (user.length === 0 && wrongPassword.length === 0) {
       setError(`Usuário não encontrado!`)
       toastError(`Usuário não encontrado!`)
-      console.log('Erro')
+    } else if (wrongPassword.length >= 1) {
+      toastError(`Senha incoreta!`)
     }
   }
 
