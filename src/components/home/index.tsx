@@ -7,6 +7,9 @@ import ResumeArea from '../resumeArea';
 import InputArea from '../inputArea';
 import EditBondModal from '../Modals/EditBondModal';
 import { deleteBonds, getBonds } from '../../services/financeService';
+import { useSelector } from 'react-redux'
+import { Navigate, useNavigate } from 'react-router-dom';
+import Header from './header';
 
 function App() {
   const [list, setList] = useState<Item[]>([])
@@ -15,6 +18,16 @@ function App() {
 
   const [editModal, setEditModal] = useState<Boolean>(false)
   const [item, setItem] = useState<Item>({date: new Date(), category: '', description: '', value: 0})
+
+  const { currentUser } = useSelector((state: any) => state.userReducer)
+  
+  const navigate = useNavigate();
+
+  if(!currentUser) {
+    navigate('/')
+  }
+
+  console.log(currentUser)
 
   useEffect(() => {
     setFilteredList(getFilteredListByMonth(list, currentMonth))
@@ -57,11 +70,7 @@ function App() {
 
   return (
     <S.Container >
-      <S.Header>
-        <S.Title>
-          Sistema de Finanças
-        </S.Title>
-      </S.Header>
+      <Header />
 
       <S.Body>
         <ResumeArea currentDate={currentMonth}
