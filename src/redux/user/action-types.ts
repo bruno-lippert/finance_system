@@ -1,3 +1,4 @@
 export enum UserActionTypes {
-    LOGIN = 'user/login'
+    LOGIN = 'user/login',
+    LOGOUT = 'user/logout'
 }

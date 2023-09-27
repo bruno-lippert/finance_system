@@ -9,6 +9,9 @@ const userReducer = (state = initialState, action: any) => {
         case UserActionTypes.LOGIN:
             return { ...state, currentUser: action.payload}
             break;
+        
+        case UserActionTypes.LOGOUT:
+            return { ...state, currentUser: null}
 
         default:
             return state;
