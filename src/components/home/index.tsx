@@ -10,6 +10,7 @@ import { deleteBonds, getBonds } from '../../services/financeService';
 import { useSelector } from 'react-redux'
 import { Navigate, useNavigate } from 'react-router-dom';
 import Header from './header';
+import Navbar from './navbar';
 
 function App() {
   const [list, setList] = useState<Item[]>([])
@@ -70,6 +71,7 @@ function App() {
 
   return (
     <S.Container >
+      <Navbar />
       <Header />
 
       <S.Body>
