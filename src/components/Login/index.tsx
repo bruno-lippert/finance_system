@@ -6,6 +6,8 @@ import { UserLogin } from '../../types/Login';
 import { BsArrowLeftCircle } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../../redux/user/actions';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,12 +19,15 @@ export default function Login() {
   const [userHasLogin, setUserHasLogin] = useState<boolean>(true)
   const [wrongPassword, setWrongPassword] = useState<string[]>([])
 
+  const dispatch = useDispatch()
+
   const fetchLogin = async () => {
     const data = await userLogin()
 
     if (data) {
       data.map(user => {
         if (user.email === email && user.password === password) {
+          dispatch(loginUser(user.name))
           navigate('/home')
           setUser(user)
         } else if (user.email === email && user.password !== password) {
