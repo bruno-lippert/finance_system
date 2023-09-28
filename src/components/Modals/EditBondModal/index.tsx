@@ -15,7 +15,7 @@ export default function EditBondModal({ item, setEditModal, onBond }: Props) {
   const [date, setDate] = useState<Date>(new Date(item.date));
   const [category, setCategory] = useState<string>('');
   const [description, setDescription] = useState<string>(item.description);
-  const [value, setValue] = useState<number>(item.value);
+  const [value, setValue] = useState<string>(item.value.toString());
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDate = event.target.value;
@@ -50,29 +50,28 @@ export default function EditBondModal({ item, setEditModal, onBond }: Props) {
   };
 
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(event.target.value));
+    setValue(event.target.value);
   };
 
-  const update = () => {
+  const update = async () => {
     const newItem: Item = {
       date: date,
       category: category,
       description: description,
-      value: value
+      value: Number(value)
     }
 
     if (category === '') {
       alert('Informe uma categoria!')
     } else if (description === '') {
       alert('Informe uma descrição!')
-    } else if (value === 0 || null) {
+    } else if (value === '0' || null) {
       alert('Informe um valor!')
     } else {
-      updateBond(id, newItem)
+      await updateBond(id, newItem)
       onBond()
+      setEditModal(false)
     }
-    
-    setEditModal(false)
   }
 
   return (
@@ -100,7 +99,7 @@ export default function EditBondModal({ item, setEditModal, onBond }: Props) {
           </div>
           <div className='inputInfos inputValue'>
             Valor:
-            <S.InputValue onChange={handleValueChange} value={value} />
+            <S.InputValue type='text' onChange={handleValueChange} value={value} />
           </div>
         </S.DataContainer>
         <S.EditContainer>
