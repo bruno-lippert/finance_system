@@ -28,8 +28,6 @@ function App() {
     navigate('/')
   }
 
-  console.log(currentUser)
-
   useEffect(() => {
     setFilteredList(getFilteredListByMonth(list, currentMonth))
   }, [list, currentMonth])
@@ -49,6 +47,7 @@ function App() {
                 ...item,
                 date: localDate,
             };
+            
         });
 
         setList(newDataWithDateObjects);
