@@ -9,19 +9,18 @@ import { BiEdit } from 'react-icons/bi'
 
 type Props = {
   item: Item,
-  position: number,
   handleRemoveBond: (id: string, item: Item) => void,
   setEditModal: (v: Boolean) => void,
   setItem: (item: Item) => void
 }
 
-export default function TableItem({ item, position, handleRemoveBond, setEditModal, setItem }: Props) {
+export default function TableItem({ item, handleRemoveBond, setEditModal, setItem }: Props) {
 
   const handleClickEdit = () => {
     setEditModal(true);
     setItem(item)
   }
-
+  
   return (
     <S.TableLine>
       <S.TableColumn>{formattedDate(item.date)}</S.TableColumn>
