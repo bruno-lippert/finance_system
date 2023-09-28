@@ -12,7 +12,7 @@ export default function InputArea({ onBond }: Props) {
   const [date, setDate] = useState<Date>(new Date());
   const [category, setCategory] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [value, setValue] = useState<number>(0);
+  const [value, setValue] = useState<number>(0.0);
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDate = event.target.value;
@@ -97,11 +97,11 @@ export default function InputArea({ onBond }: Props) {
         </div>
         <div className='inputInfos inputdescription'>
           Descrição:
-          <S.InputDescription onChange={handleDescriptionChange} value={description} />
+          <S.InputDescription type='text' onChange={handleDescriptionChange} value={description} />
         </div>
         <div className='inputInfos inputValue'>
           Valor:
-          <S.InputValue onChange={handleValueChange} value={value} />
+          <S.InputValue type='number' onChange={handleValueChange} value={value} />
         </div>
       </S.DataContainer>
       <S.SendContainer>
