@@ -12,7 +12,7 @@ export default function InputArea({ onBond }: Props) {
   const [date, setDate] = useState<Date>(new Date());
   const [category, setCategory] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [value, setValue] = useState<number>(0.0);
+  const [value, setValue] = useState<string>('0');
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDate = event.target.value;
@@ -47,7 +47,7 @@ export default function InputArea({ onBond }: Props) {
   };
 
   const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(event.target.value));
+    setValue(event.target.value);
   };
 
   const register = async () => {
@@ -55,14 +55,14 @@ export default function InputArea({ onBond }: Props) {
       date: date,
       category: category,
       description: description,
-      value: value
+      value: Number(value)
     }
 
     if (category === '') {
       alert('Informe uma categoria!')
     } else if (description === '') {
       alert('Informe uma descrição!')
-    } else if (value === 0 || null) {
+    } else if (value === '0' || null) {
       alert('Informe um valor!')
     } else {
       await createBond(newItem)
@@ -75,7 +75,7 @@ export default function InputArea({ onBond }: Props) {
   const resetInputs = () => {
     setDate(new Date())
     setDescription('')
-    setValue(0)
+    setValue('0')
   }
 
   return (
@@ -101,7 +101,7 @@ export default function InputArea({ onBond }: Props) {
         </div>
         <div className='inputInfos inputValue'>
           Valor:
-          <S.InputValue type='number' onChange={handleValueChange} value={value} />
+          <S.InputValue type='text' onChange={handleValueChange} value={value} />
         </div>
       </S.DataContainer>
       <S.SendContainer>
