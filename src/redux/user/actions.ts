@@ -8,6 +8,9 @@ export const loginUser = (payload: string) => ({
     payload,
 })
 
-export const logoutUser = () => ({
-    type: UserActionTypes.LOGOUT,
-})
+export const logoutUser = () => {
+    localStorage.removeItem('currentUser')
+
+    return {type: UserActionTypes.LOGOUT}
+}
+    
