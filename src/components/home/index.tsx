@@ -7,10 +7,11 @@ import ResumeArea from '../resumeArea';
 import InputArea from '../inputArea';
 import EditBondModal from '../Modals/EditBondModal';
 import { deleteBonds, getBonds } from '../../services/financeService';
-import { useSelector } from 'react-redux'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 import Header from './header';
 import Navbar from './navbar';
+import { loginUser } from '../../redux/user/actions';
 
 function App() {
   const [list, setList] = useState<Item[]>([])
@@ -20,12 +21,23 @@ function App() {
   const [editModal, setEditModal] = useState<Boolean>(false)
   const [item, setItem] = useState<Item>({date: new Date(), category: '', description: '', value: 0})
 
+  const dispatch = useDispatch()
   const { currentUser } = useSelector((state: any) => state.userReducer)
   
+  if (currentUser !== null) {
+    console.log(`teste `+currentUser)
+    localStorage.setItem('currentUser', currentUser);
+  }
+  const currentUserInLocalStorage = localStorage.getItem('currentUser')
+  
+
   const navigate = useNavigate();
 
-  if(!currentUser) {
+  if(currentUserInLocalStorage === 'null' || currentUserInLocalStorage === null) {
+    console.log('1° if : '+currentUserInLocalStorage)
     navigate('/')
+  }else {
+    console.log('else : '+currentUserInLocalStorage)
   }
 
   useEffect(() => {
